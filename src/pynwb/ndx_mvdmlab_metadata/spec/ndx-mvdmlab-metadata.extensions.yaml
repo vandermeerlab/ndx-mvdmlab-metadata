@@ -1,7 +1,7 @@
 groups:
 - neurodata_type_def: LabMetaDataExtension
   neurodata_type_inc: LabMetaData
-  doc: type for storing MVDMlab metadata
+  doc: type for storing MvdMlab metadata
   attributes:
   - name: probe1_ID
     dtype: text

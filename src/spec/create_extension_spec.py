@@ -4,7 +4,7 @@ from pynwb.spec import NWBNamespaceBuilder, NWBGroupSpec, NWBAttributeSpec, expo
 
 def main():
     ns_builder = NWBNamespaceBuilder(
-        doc='type for storing metadata for MvdMLab',
+        doc='type for storing metadata for MvdMlab',
         name='ndx-mvdmlab-metadata',
         version='0.1.0',
         author=['Manish Mohapatra'],
@@ -16,7 +16,7 @@ def main():
 
     # Create LabMetaDataExtension
     LabMetaDataExtension = NWBGroupSpec(
-        doc='type for storing MVDMlab metadata',
+        doc='type for storing MvdMlab metadata',
         neurodata_type_def='LabMetaDataExtension',
         neurodata_type_inc='LabMetaData',
         attributes=[

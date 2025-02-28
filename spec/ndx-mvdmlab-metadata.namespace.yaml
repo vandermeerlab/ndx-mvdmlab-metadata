@@ -3,7 +3,7 @@ namespaces:
   - Manish Mohapatra
   contact:
   - manishofyore@gmail.com
-  doc: type for storing metadata for MvdMLab
+  doc: type for storing metadata for MvdMlab
   name: ndx-mvdmlab-metadata
   schema:
   - namespace: core
