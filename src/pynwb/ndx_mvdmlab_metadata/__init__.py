@@ -1,10 +1,14 @@
-from pynwb import get_class
+import os
+from pynwb import load_namespaces, get_class
 
-# Import the extension classes
-from .probe_extension import ProbeExtension
-from .odorant_extension import OdorantInfoExtension
-from .block_extension import ExperimentalBlockExtension
-from .annotation_extension import ExperimenterAnnotationExtension
+name = 'ndx-mvdmlab-metadata'
 
-# Get LabMetaDataExtension from the namespace
-LabMetaDataExtension = get_class('LabMetaDataExtension', 'ndx-mvdmlab-metadata')
+spec_path = os.path.abspath(os.path.dirname(__file__))
+ns_path = os.path.join(spec_path, 'spec', f'{name}.namespace.yaml')
+
+load_namespaces(ns_path)
+
+ProbeExtension = get_class('ProbeExtension', name)
+OdorantInfoExtension = get_class('OdorantInfoExtension', name)
+ExperimentalBlockExtension = get_class('ExperimentalBlockExtension', name)
+ExperimenterAnnotationExtension = get_class('ExperimenterAnnotationExtension', name)

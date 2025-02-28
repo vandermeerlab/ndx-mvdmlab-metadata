@@ -72,7 +72,6 @@ def main():
         NWBAttributeSpec(name='roll', doc='Roll angle of probe', dtype='float', required=False),
         NWBAttributeSpec(name='pitch', doc='Pitch angle of probe', dtype='float', required=False),
         NWBAttributeSpec(name='yaw', doc='Yaw angle of probe', dtype='float', required=False),
-        NWBAttributeSpec(name='area', doc='Brain area targeted', dtype='text', required=False),
     ]
     
     ProbeExtension = NWBGroupSpec(
@@ -162,7 +161,6 @@ def main():
 
     # Export the extension to yaml files in the spec folder
     output_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'spec'))
-    print(output_dir)
     export_spec(ns_builder, [LabMetaDataExtension, ProbeExtension, OdorantInfoExtension, 
                              ExperimentalBlockExtension, ExperimenterAnnotationExtension], output_dir)
 
