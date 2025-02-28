@@ -1,0 +1,169 @@
+groups:
+- neurodata_type_def: LabMetaDataExtension
+  neurodata_type_inc: LabMetaData
+  doc: type for storing MVDMlab metadata
+  attributes:
+  - name: probe1_ID
+    dtype: text
+    doc: ID of probe 1
+    required: false
+  - name: probe2_ID
+    dtype: text
+    doc: ID of probe 2
+    required: false
+  groups:
+  - name: probe1
+    neurodata_type_inc: ProbeExtension
+    doc: information about probe 1
+  - name: probe2
+    neurodata_type_inc: ProbeExtension
+    doc: information about probe 2
+  - name: odorant_info
+    neurodata_type_inc: OdorantInfoExtension
+    doc: information about odorants used
+  - name: block_info
+    neurodata_type_inc: ExperimentalBlockExtension
+    doc: information about experimental blocks
+  - name: channel_annotations
+    neurodata_type_inc: ExperimenterAnnotationExtension
+    doc: annotations about specific channels
+- neurodata_type_def: ProbeExtension
+  neurodata_type_inc: LabMetaData
+  doc: type for storing probe information
+  attributes:
+  - name: ID
+    dtype: text
+    doc: Probe identifier
+    required: false
+  - name: hemisphere
+    dtype: text
+    doc: Brain hemisphere where probe was placed
+    required: false
+  - name: Depth
+    dtype: float
+    doc: Depth of probe insertion in mm
+    required: false
+  - name: AP
+    dtype: float
+    doc: Anterior-posterior coordinates
+    required: false
+  - name: ML
+    dtype: float
+    doc: Medial-lateral coordinates
+    required: false
+  - name: roll
+    dtype: float
+    doc: Roll angle of probe
+    required: false
+  - name: pitch
+    dtype: float
+    doc: Pitch angle of probe
+    required: false
+  - name: yaw
+    dtype: float
+    doc: Yaw angle of probe
+    required: false
+  - name: area
+    dtype: text
+    doc: Brain area targeted
+    required: false
+- neurodata_type_def: OdorantInfoExtension
+  neurodata_type_inc: LabMetaData
+  doc: type for storing odorant information
+  attributes:
+  - name: odorA
+    dtype: text
+    doc: Identity of odor A
+    required: false
+  - name: odorB
+    dtype: text
+    doc: Identity of odor B
+    required: false
+  - name: odorC
+    dtype: text
+    doc: Identity of odor C
+    required: false
+  - name: odorD
+    dtype: text
+    doc: Identity of odor D
+    required: false
+  - name: odorE
+    dtype: text
+    doc: Identity of odor E
+    required: false
+  - name: odorF
+    dtype: text
+    doc: Identity of odor F
+    required: false
+  - name: odorG
+    dtype: text
+    doc: Identity of odor G
+    required: false
+- neurodata_type_def: ExperimentalBlockExtension
+  neurodata_type_inc: LabMetaData
+  doc: type for storing experimental block information
+  attributes:
+  - name: block1_type
+    dtype: text
+    doc: Type of block 1
+    required: false
+  - name: block2_type
+    dtype: text
+    doc: Type of block 2
+    required: false
+  - name: block3_type
+    dtype: text
+    doc: Type of block 3
+    required: false
+- neurodata_type_def: ExperimenterAnnotationExtension
+  neurodata_type_inc: LabMetaData
+  doc: type for storing experimenter annotations about specific channels
+  attributes:
+  - name: imec0_shank0_SWR_channel
+    dtype: text
+    doc: Channel on imec0 shank0 with best SWR activity
+    required: false
+  - name: imec0_shank1_SWR_channel
+    dtype: text
+    doc: Channel on imec0 shank1 with best SWR activity
+    required: false
+  - name: imec0_shank2_SWR_channel
+    dtype: text
+    doc: Channel on imec0 shank2 with best SWR activity
+    required: false
+  - name: imec0_shank3_SWR_channel
+    dtype: text
+    doc: Channel on imec0 shank3 with best SWR activity
+    required: false
+  - name: imec0_best_SWR_channel
+    dtype: text
+    doc: Best SWR channel on imec0
+    required: false
+  - name: imec0_best_control_channel
+    dtype: text
+    doc: Best control channel on imec0
+    required: false
+  - name: imec1_shank0_SWR_channel
+    dtype: text
+    doc: Channel on imec1 shank0 with best SWR activity
+    required: false
+  - name: imec1_shank1_SWR_channel
+    dtype: text
+    doc: Channel on imec1 shank1 with best SWR activity
+    required: false
+  - name: imec1_shank2_SWR_channel
+    dtype: text
+    doc: Channel on imec1 shank2 with best SWR activity
+    required: false
+  - name: imec1_shank3_SWR_channel
+    dtype: text
+    doc: Channel on imec1 shank3 with best SWR activity
+    required: false
+  - name: imec1_best_SWR_channel
+    dtype: text
+    doc: Best SWR channel on imec1
+    required: false
+  - name: imec1_best_control_channel
+    dtype: text
+    doc: Best control channel on imec1
+    required: false
