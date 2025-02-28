@@ -19,20 +19,6 @@ def main():
         doc='type for storing MvdMlab metadata',
         neurodata_type_def='LabMetaDataExtension',
         neurodata_type_inc='LabMetaData',
-        attributes=[
-            NWBAttributeSpec(
-                name='probe1_ID',
-                doc='ID of probe 1',
-                dtype='text',
-                required=False
-            ),
-            NWBAttributeSpec(
-                name='probe2_ID',
-                doc='ID of probe 2',
-                dtype='text',
-                required=False
-            ),
-        ],
         groups=[
             NWBGroupSpec(
                 name='probe1',
@@ -55,9 +41,9 @@ def main():
                 doc='information about experimental blocks'
             ),
             NWBGroupSpec(
-                name='channel_annotations',
-                neurodata_type_inc='ExperimenterAnnotationExtension',
-                doc='annotations about specific channels'
+                name='preprocessed_annotations',
+                neurodata_type_inc='PreprocessedAnnotationExtension',
+                doc='annotations added by experimenter after preprocessing' 
             ),
         ]
     )
@@ -66,12 +52,12 @@ def main():
     probe_attributes = [
         NWBAttributeSpec(name='ID', doc='Probe identifier', dtype='text', required=False),
         NWBAttributeSpec(name='hemisphere', doc='Brain hemisphere where probe was placed', dtype='text', required=False),
-        NWBAttributeSpec(name='Depth', doc='Depth of probe insertion in mm', dtype='float', required=False),
+        NWBAttributeSpec(name='depth', doc='Depth of probe insertion in mm', dtype='float', required=False),
         NWBAttributeSpec(name='AP', doc='Anterior-posterior coordinates', dtype='float', required=False),
         NWBAttributeSpec(name='ML', doc='Medial-lateral coordinates', dtype='float', required=False),
-        NWBAttributeSpec(name='roll', doc='Roll angle of probe', dtype='float', required=False),
-        NWBAttributeSpec(name='pitch', doc='Pitch angle of probe', dtype='float', required=False),
-        NWBAttributeSpec(name='yaw', doc='Yaw angle of probe', dtype='float', required=False),
+        NWBAttributeSpec(name='roll', doc='Roll angle of probe (following Pinpoint convention)', dtype='float', required=False),
+        NWBAttributeSpec(name='pitch', doc='Pitch angle of probe (following Pinpoint convention)', dtype='float', required=False),
+        NWBAttributeSpec(name='yaw', doc='Yaw angle of probe (following Pinpoint convention)', dtype='float', required=False),
     ]
     
     ProbeExtension = NWBGroupSpec(
@@ -86,7 +72,7 @@ def main():
     for odor in ['A', 'B', 'C', 'D', 'E', 'F', 'G']:
         odor_attributes.append(
             NWBAttributeSpec(
-                name=f'odor{odor}',
+                name=f'Odor {odor}',
                 doc=f'Identity of odor {odor}',
                 dtype='text',
                 required=False
@@ -119,7 +105,7 @@ def main():
         attributes=block_attributes
     )
 
-    # Create ExperimenterAnnotationExtension
+    # Create PreprocessedAnnotationExtension
     annotation_attributes = []
     
     # Add attributes for SWR and control channels
@@ -152,9 +138,9 @@ def main():
             )
         )
     
-    ExperimenterAnnotationExtension = NWBGroupSpec(
-        doc='type for storing experimenter annotations about specific channels',
-        neurodata_type_def='ExperimenterAnnotationExtension',
+    PreprocessedAnnotationExtension = NWBGroupSpec(
+        doc='type for storing experimenter annotations obtained after preprocessing',
+        neurodata_type_def='PreprocessedAnnotationExtension',
         neurodata_type_inc='LabMetaData',
         attributes=annotation_attributes
     )
@@ -162,7 +148,7 @@ def main():
     # Export the extension to yaml files in the spec folder
     output_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'spec'))
     export_spec(ns_builder, [LabMetaDataExtension, ProbeExtension, OdorantInfoExtension, 
-                             ExperimentalBlockExtension, ExperimenterAnnotationExtension], output_dir)
+                             ExperimentalBlockExtension, PreprocessedAnnotationExtension], output_dir)
 
 
 if __name__ == "__main__":

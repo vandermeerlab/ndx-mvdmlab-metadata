@@ -2,15 +2,6 @@ groups:
 - neurodata_type_def: LabMetaDataExtension
   neurodata_type_inc: LabMetaData
   doc: type for storing MvdMlab metadata
-  attributes:
-  - name: probe1_ID
-    dtype: text
-    doc: ID of probe 1
-    required: false
-  - name: probe2_ID
-    dtype: text
-    doc: ID of probe 2
-    required: false
   groups:
   - name: probe1
     neurodata_type_inc: ProbeExtension
@@ -24,9 +15,9 @@ groups:
   - name: block_info
     neurodata_type_inc: ExperimentalBlockExtension
     doc: information about experimental blocks
-  - name: channel_annotations
-    neurodata_type_inc: ExperimenterAnnotationExtension
-    doc: annotations about specific channels
+  - name: preprocessed_annotations
+    neurodata_type_inc: PreprocessedAnnotationExtension
+    doc: annotations added by experimenter after preprocessing
 - neurodata_type_def: ProbeExtension
   neurodata_type_inc: LabMetaData
   doc: type for storing probe information
@@ -39,7 +30,7 @@ groups:
     dtype: text
     doc: Brain hemisphere where probe was placed
     required: false
-  - name: Depth
+  - name: depth
     dtype: float
     doc: Depth of probe insertion in mm
     required: false
@@ -53,45 +44,45 @@ groups:
     required: false
   - name: roll
     dtype: float
-    doc: Roll angle of probe
+    doc: Roll angle of probe (following Pinpoint convention)
     required: false
   - name: pitch
     dtype: float
-    doc: Pitch angle of probe
+    doc: Pitch angle of probe (following Pinpoint convention)
     required: false
   - name: yaw
     dtype: float
-    doc: Yaw angle of probe
+    doc: Yaw angle of probe (following Pinpoint convention)
     required: false
 - neurodata_type_def: OdorantInfoExtension
   neurodata_type_inc: LabMetaData
   doc: type for storing odorant information
   attributes:
-  - name: odorA
+  - name: Odor A
     dtype: text
     doc: Identity of odor A
     required: false
-  - name: odorB
+  - name: Odor B
     dtype: text
     doc: Identity of odor B
     required: false
-  - name: odorC
+  - name: Odor C
     dtype: text
     doc: Identity of odor C
     required: false
-  - name: odorD
+  - name: Odor D
     dtype: text
     doc: Identity of odor D
     required: false
-  - name: odorE
+  - name: Odor E
     dtype: text
     doc: Identity of odor E
     required: false
-  - name: odorF
+  - name: Odor F
     dtype: text
     doc: Identity of odor F
     required: false
-  - name: odorG
+  - name: Odor G
     dtype: text
     doc: Identity of odor G
     required: false
@@ -111,9 +102,9 @@ groups:
     dtype: text
     doc: Type of block 3
     required: false
-- neurodata_type_def: ExperimenterAnnotationExtension
+- neurodata_type_def: PreprocessedAnnotationExtension
   neurodata_type_inc: LabMetaData
-  doc: type for storing experimenter annotations about specific channels
+  doc: type for storing experimenter annotations obtained after preprocessing
   attributes:
   - name: imec0_shank0_SWR_channel
     dtype: text
